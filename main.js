@@ -20,12 +20,15 @@ let animals = [
   "elephant",
 ];
 let animalsNoDuplicates = [];
-
+for (const animal of animals) {
+  if (!animalsNoDuplicates.includes(animal)) {
+    animalsNoDuplicates.push(animal);
+  }
+}
 
 console.log(animalsNoDuplicates);
 
-/**
- * Exercise 2
+/* Exercise 2
  * You have an array of colored products in input.
  * Fill the array redProducts with all red products.
  *
@@ -43,15 +46,17 @@ let products = [
   "Yellow Hat",
 ];
 let redProducts = [];
-
-
+for (const product of products) {
+  if (product.toLowerCase().includes("red")) {
+    redProducts.push(product);
+  }
+}
 console.log(redProducts);
-
 /**
  * Exercise 3
  * You have an array with a list of writers.
  * Fill the array writersLetterJ with the writers whose last name starts with the letter "J"
- * 
+ *
  * Expected output: [ 'Shirley Jackson', 'James Joyce' ]
  */
 
@@ -71,9 +76,12 @@ let writers = [
   "James Joyce",
 ];
 let writersLetterJ = [];
-
+for (const writer of writers) {
+  if (writer.includes("J", 1)) {
+    writersLetterJ.push(writer);
+  }
+}
 console.log(writersLetterJ);
-
 
 /**
  * Exercise 4
@@ -81,19 +89,23 @@ console.log(writersLetterJ);
  * Fill the array longWords only with words that have more than 9 characters
  */
 
-let text = "Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun Orbiting this at a distance of roughly ninety-two million miles is an utterly insignificant little blue green planet whose ape-descended life forms are so amazingly primitive that they still think digital watches are a pretty neat idea This planet has or rather had a problem which was this most of the people on it were unhappy for pretty much of the time Many solutions were suggested for this problem but most of these were largely concerned with the movements of small green pieces of paper which is odd because on the whole it wasn't the small green pieces of paper that were unhappy";
+let text =
+  "Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun Orbiting this at a distance of roughly ninety-two million miles is an utterly insignificant little blue green planet whose ape-descended life forms are so amazingly primitive that they still think digital watches are a pretty neat idea This planet has or rather had a problem which was this most of the people on it were unhappy for pretty much of the time Many solutions were suggested for this problem but most of these were largely concerned with the movements of small green pieces of paper which is odd because on the whole it wasn't the small green pieces of paper that were unhappy";
 let longWords = [];
-
+let arrayText = text.split(" ");
+for (const word of arrayText) {
+  if (word.length > 9) {
+    longWords.push(word);
+  }
+}
 console.log(longWords);
-
-
 
 /**
  * Exercise 5
  * Given a string containing a word in input, create another string containing the same word without vowels.
- * 
+ *
  * Input -> Output
- * 
+ *
  * "hello" -> "hll"
  * elephant -> "lphnt"
  * "JavaScript" -> "JvScrpt"
@@ -103,37 +115,54 @@ console.log(longWords);
 
 let word = "hello";
 let wordNoVowels = "";
-
+let vowels = ["a", "e", "i", "o", "u"];
+for (const letter of word) {
+  if (!vowels.includes(letter)) {
+    wordNoVowels += letter;
+  }
+}
 console.log(wordNoVowels);
 
 /**
  * Exercise 6
  * In input you have an array of words.
  * Fill another array with all the words from the first array with the first letter capitalized
- * 
+ *
+ *
  * Expected output: [ 'Table', 'Chair', 'Book', 'Tea', 'Coffee' ]
  */
 
 let words2 = ["table", "chair", "book", "tea", "coffee"];
 let capitalized = [];
-
+for (const letter of words2) {
+  capitalized.push(letter[0].toUpperCase() + letter.slice(1));
+}
 console.log(capitalized);
 
 /**
  * Exercise 7
  * You have an array that contains a list of products with their prices.
  * Fill another array with only the prices and calculate the sum of all the prices in another variable
- * 
+ *
  * Expected output:
  * prices: [ 9.99, 39, 29.99, 19.99 ]
  * total: 98.97
  */
 
-
-let productWithPrices = ["T-shirt €9.99", "Jeans €39", "Sweater €29.99", "Hat €19.99"];
+let productWithPrices = [
+  "T-shirt €9.99",
+  "Jeans €39",
+  "Sweater €29.99",
+  "Hat €19.99",
+];
 let prices = [];
 let total = 0;
-
+for (const price of productWithPrices) {
+  prices.push(price.split("€")[1]);
+}
+for (const item of prices) {
+  total = total + parseFloat(item);
+}
 
 console.log(prices);
 console.log(total);
